@@ -5,4 +5,4 @@ This repository contains the front-end of the notamedia web utility. Here is the
 ## Technologies
 
 - React
-- Tailwindcss
+- TailwindCss
