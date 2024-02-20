@@ -2,6 +2,10 @@ import { useNavigate } from "react-router-dom"
 
 import { logout } from "../../utils"
 
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import Navbar from '../../components/Navbar'
+
 
 const HomePage = () => {
 
@@ -13,10 +17,12 @@ const HomePage = () => {
         navigate('/login')
     }
 
-    return (
-        
+    return (        
         <>
+            <Header />
+            <Navbar />
             <button onClick={logOut}>Log out</button>
+            <Footer />
         </>
     )
     
