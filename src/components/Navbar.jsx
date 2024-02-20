@@ -1,12 +1,28 @@
 import React from "react";
 import { FaHome, FaUser, FaSignature } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdAccountCircle, MdEmail, MdLogout } from "react-icons/md";
 import { FaCodeCompare, FaBuilding, FaFileSignature } from "react-icons/fa6";
 import { RiBox3Fill } from "react-icons/ri";
 import { IoDocumentText } from "react-icons/io5";
 
+import { logout } from '../utils'
+
+
 const Navbar = () => {
+
+  const navigate = useNavigate()
+  
+  const logOut = (e) => {
+
+    e.preventDefault()
+
+    logout()
+    navigate('/login')
+    
+  }
+  
+  
   return (
     <div className="">
       <div className="flex ml-14 mt-12 w-72 flex-col bg-nota-black rounded-lg ">
@@ -54,7 +70,7 @@ const Navbar = () => {
               <span className="text-xl ml-2">SuperUser</span>
               <span className="font-light  ml-2">Admin</span>
             </div>
-            <button className="text-red-500 ml-auto text-2xl" alt="Logout">
+            <button onClick={logOut} className="text-red-500 ml-auto text-2xl" alt="Logout">
               <MdLogout />
             </button>
           </div>

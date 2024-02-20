@@ -18,12 +18,13 @@ const HomePage = () => {
     }
 
     return (        
-        <>
+        <div className='flex flex-col min-h-screen'>
             <Header />
-            <Navbar />
-            <button onClick={logOut}>Log out</button>
+            <div className="flex flex-row">
+                <Navbar />
+            </div>
             <Footer />
-        </>
+        </div>
     )
     
 }
