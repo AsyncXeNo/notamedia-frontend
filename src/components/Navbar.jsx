@@ -6,25 +6,20 @@ import { FaCodeCompare, FaBuilding, FaFileSignature } from "react-icons/fa6";
 import { RiBox3Fill } from "react-icons/ri";
 import { IoDocumentText } from "react-icons/io5";
 
-import { logout } from '../utils'
-
+import { logout } from "../utils";
 
 const Navbar = () => {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
-  
   const logOut = (e) => {
+    e.preventDefault();
 
-    e.preventDefault()
+    logout();
+    navigate("/login");
+  };
 
-    logout()
-    navigate('/login')
-    
-  }
-  
-  
   return (
-    <div className="">
+    <div className="h-full">
       <div className="flex ml-14 mt-12 w-72 flex-col bg-nota-black rounded-lg ">
         <div className="px-10 py-7">
           <div className="flex flex-row text-nota-white items-center my-4">
@@ -70,7 +65,11 @@ const Navbar = () => {
               <span className="text-xl ml-2">SuperUser</span>
               <span className="font-light  ml-2">Admin</span>
             </div>
-            <button onClick={logOut} className="text-red-500 ml-auto text-2xl" alt="Logout">
+            <button
+              onClick={logOut}
+              className="text-red-500 ml-auto text-2xl"
+              alt="Logout"
+            >
               <MdLogout />
             </button>
           </div>
