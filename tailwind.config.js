@@ -15,6 +15,7 @@ export default {
         'nota-white': '#FCF6E8',
         'nota-peach': '#FECCB3',
         'nota-yellow': '#FEC447',
+        'nota-darkpeach': '#FFB692',
 
       }
     },
