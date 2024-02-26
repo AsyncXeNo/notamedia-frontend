@@ -15,9 +15,12 @@ import SignatureManagementPage from "./pages/signatures/SignatureManagementPage"
 import SignatureCreationPage from "./pages/signatures/SignatureCreationPage";
 import SignatureUpdationPage from "./pages/signatures/SignatureUpdationPage";
 
-import CompaniesCreationPage from "./pages/companies/CompaniesCreationPage";
-import CompaniesUpdationPage from "./pages/companies/CompaniesUpdationPage";
-import CompaniesManagementPage from "./pages/companies/CompaniesManagementPage";
+import IndustriesCreationPage from "./pages/industries/IndustriesCreationPage";
+import IndustriesUpdationPage from "./pages/industries/IndustriesUpdationPage";
+import IndustriesManagementPage from "./pages/industries/IndustriesManagementPage";
+import ComparisonManagementPage from "./pages/comparison/ComparisonManagementPage";
+import ComparisonCreationPage from "./pages/comparison/ComparisonCreationPage";
+import ComparisonUpdationPage from "./pages/comparison/ComparisonUpdationPage";
 
 function App() {
   return (
@@ -38,11 +41,18 @@ function App() {
           element={<SignatureUpdationPage />}
         />
 
-        <Route path="/companies" element={<CompaniesManagementPage />} />
-        <Route path="/companies/new" element={<CompaniesCreationPage />} />
+        <Route path="/industries" element={<IndustriesManagementPage />} />
+        <Route path="/industries/new" element={<IndustriesCreationPage />} />
         <Route
-          path="/companies/:unique_name"
-          element={<CompaniesUpdationPage />}
+          path="/industries/:unique_name"
+          element={<IndustriesUpdationPage />}
+        />
+
+        <Route path="/comparison" element={<ComparisonManagementPage />} />
+        <Route path="/comparison/new" element={<ComparisonCreationPage />} />
+        <Route
+          path="/comparison/:unique_name"
+          element={<ComparisonUpdationPage />}
         />
 
         <Route path="*" element={<NotFound />} />

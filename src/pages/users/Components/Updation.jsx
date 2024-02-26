@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import { useState } from "react";
 
-const Registration = () => {
+const Updation = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -100,4 +100,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default Updation;

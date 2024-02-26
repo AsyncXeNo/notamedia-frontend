@@ -1,17 +1,18 @@
 import React from "react";
-import CompaniesCreation from "./Components/CompaniesCreation";
 
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-const CompaniesCreationPage = () => {
+import IndustriesManagement from "./Components/IndustriesManagement";
+
+const IndustriesManagementPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <div className="flex flex-row">
         <Navbar />
-        <CompaniesCreation />
+        <IndustriesManagement />
       </div>
 
       <Footer />
@@ -19,4 +20,4 @@ const CompaniesCreationPage = () => {
   );
 };
 
-export default CompaniesCreationPage;
+export default IndustriesManagementPage;

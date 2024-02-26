@@ -1,18 +1,17 @@
 import React from "react";
-
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-import CompaniesManagement from "./Components/CompaniesManagement";
+import ComparisonUpdation from "./Components/ComparisonUpdation";
 
-const CompaniesManagementPage = () => {
+const ComparisonUpdationPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <div className="flex flex-row">
         <Navbar />
-        <CompaniesManagement />
+        <ComparisonUpdation />
       </div>
 
       <Footer />
@@ -20,4 +19,4 @@ const CompaniesManagementPage = () => {
   );
 };
 
-export default CompaniesManagementPage;
+export default ComparisonUpdationPage;

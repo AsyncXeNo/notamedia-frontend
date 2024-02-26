@@ -1,17 +1,17 @@
 import React from "react";
+import ComparisonCreation from "./Components/ComparisonCreation";
+
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-import CompaniesUpdation from "./Components/CompaniesUpdation";
-
-const CompaniesUpdationPage = () => {
+const ComparisonCreationPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <div className="flex flex-row">
         <Navbar />
-        <CompaniesUpdation />
+        <ComparisonCreation />
       </div>
 
       <Footer />
@@ -19,4 +19,4 @@ const CompaniesUpdationPage = () => {
   );
 };
 
-export default CompaniesUpdationPage;
+export default ComparisonCreationPage;

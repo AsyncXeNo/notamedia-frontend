@@ -2,7 +2,7 @@ import React from "react";
 import { FaHome, FaUser, FaSignature } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { MdAccountCircle, MdEmail, MdLogout } from "react-icons/md";
-import { FaCodeCompare, FaBuilding, FaFileSignature } from "react-icons/fa6";
+import { FaCodeCompare, FaBuilding, FaIndustry } from "react-icons/fa6";
 import { RiBox3Fill } from "react-icons/ri";
 import { IoDocumentText } from "react-icons/io5";
 
@@ -45,6 +45,10 @@ const Navbar = () => {
           <div className="flex flex-row text-nota-white items-center my-4">
             <RiBox3Fill className="text-xl mt-px" />
             <Link className="text-xl ml-2">Products</Link>
+          </div>
+          <div className="flex flex-row text-nota-white items-center my-4">
+            <FaIndustry className="text-xl mt-px" />
+            <Link className="text-xl ml-2">Industries</Link>
           </div>
           <div className="flex flex-row text-nota-white items-center my-4">
             <FaBuilding className="text-xl mt-px" />

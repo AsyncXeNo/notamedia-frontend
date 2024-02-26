@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import { useState } from "react";
 
-const Registration = () => {
+const SignatureCreation = () => {
   const [image, setImage] = useState(null);
 
   const handleImageChange = (e) => {
@@ -122,4 +122,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default SignatureCreation;

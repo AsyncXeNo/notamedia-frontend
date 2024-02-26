@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useState } from "react";
 
-const Registration = () => {
+const SignatureManagement = () => {
   const [previewImage, setPreviewImage] = useState(null);
 
   const handleImageClick = (imageUrl) => {
@@ -95,4 +95,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default SignatureManagement;
