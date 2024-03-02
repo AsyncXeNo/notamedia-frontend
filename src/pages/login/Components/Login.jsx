@@ -6,6 +6,8 @@ import { useState } from "react";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <div className="flex w-full justify-center items-center">
@@ -17,6 +19,8 @@ const Login = () => {
           <FaUser className="text-3xl text-nota-black mt-2 ml-6" />
           <input
             type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
             className="flex flex-row w-2/3 placeholder-nota-black text-center bg-nota-white border-none focus:outline-none font-markazi-text text-xl"
           />
@@ -25,6 +29,8 @@ const Login = () => {
           <FaLock className="text-3xl text-nota-black mt-2 ml-6" />
           <input
             type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             className="flex flex-row w-2/3 placeholder-nota-black text-center bg-nota-white border-none focus:outline-none font-markazi-text text-xl"
           />

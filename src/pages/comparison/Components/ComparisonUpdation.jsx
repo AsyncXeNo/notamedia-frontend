@@ -1,54 +1,58 @@
 import React, { useState } from "react";
 
-const ComparisonUpdation = () => {
-  // State variables to track the number of rows, feature column, and plan columns
-  const [rowCount, setRowCount] = useState(4);
-  const [featureColumn, setFeatureColumn] = useState(Array(rowCount).fill(""));
-  const [planColumns, setPlanColumns] = useState(
-    Array(rowCount).fill(Array(3).fill(""))
-  );
+const ComparisonCreation = () => {
+  const [rows, setRows] = useState([
+    ["Features", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+  ]);
 
-  // Function to add a row
+  const [columnCount, setColumnCount] = useState(3);
+
+  const getEntry = (rowIndex, columnIndex) => {
+    return rows[rowIndex][columnIndex];
+  };
+
+  const setEntry = (rowIndex, columnIndex, entry) => {
+    if (rowIndex === 0 && columnIndex === 0) {
+      return;
+    }
+    const newRows = [...rows];
+    newRows[rowIndex][columnIndex] = entry;
+    setRows(newRows);
+  };
+
   const addRow = () => {
-    setRowCount(rowCount + 1);
-    setFeatureColumn([...featureColumn, ""]);
-    // Initialize new plan columns for the added row
-    setPlanColumns([...planColumns, Array(3).fill("")]);
+    const newRow = Array.from({ length: columnCount }, () => "");
+    setRows([...rows, newRow]);
   };
 
-  // Function to delete a row
-  const deleteRow = () => {
-    if (rowCount > 1) {
-      setRowCount(rowCount - 1);
-      setFeatureColumn(featureColumn.slice(0, -1));
-      setPlanColumns(planColumns.slice(0, -1));
+  const removeRow = () => {
+    if (rows.length === 1) {
+      return;
     }
+    const newRows = [...rows];
+    newRows.pop();
+    setRows(newRows);
   };
 
-  // Function to add a column
   const addColumn = () => {
-    setPlanColumns(planColumns.map((column) => [...column, ""]));
+    const newRows = rows.map((row) => [...row, ""]);
+    setRows(newRows);
+    setColumnCount((prevCount) => prevCount + 1);
   };
 
-  // Function to delete a column
-  const deleteColumn = () => {
-    if (planColumns[0].length > 1) {
-      setPlanColumns(planColumns.map((column) => column.slice(0, -1)));
+  const removeColumn = () => {
+    if (columnCount === 1) {
+      return;
     }
-  };
-
-  // Function to handle input change in the feature column
-  const handleFeatureChange = (value, rowIndex) => {
-    const updatedFeatureColumn = [...featureColumn];
-    updatedFeatureColumn[rowIndex] = value;
-    setFeatureColumn(updatedFeatureColumn);
-  };
-
-  // Function to handle input change in the plan columns
-  const handlePlanChange = (value, rowIndex, colIndex) => {
-    const updatedPlanColumns = [...planColumns];
-    updatedPlanColumns[rowIndex][colIndex] = value;
-    setPlanColumns(updatedPlanColumns);
+    const newRows = rows.map((row) => {
+      const newRow = [...row];
+      newRow.pop();
+      return newRow;
+    });
+    setRows(newRows);
+    setColumnCount((prevCount) => prevCount - 1);
   };
 
   return (
@@ -58,49 +62,47 @@ const ComparisonUpdation = () => {
           Comparison Updation
         </span>
         <div className="flex justify-center items-center mt-6 mb-6 w-5/6 ">
-          <table className="border-separate border border-nota-black font-markazi-text text-nota-blue text-xl w-full h-full">
+          <table className="border-separate border border-nota-black font-markazi-text text-nota-blue text-xl w-full h-full table-fixed">
             <thead>
               <tr>
-                <th className="border-separate border border-nota-black bg-nota-lightblue">
-                  Features
-                </th>
-                {planColumns[0].map((_, index) => (
+                {rows[0].map((data, index) => (
                   <th
                     key={index}
                     className="border-separate border border-nota-black bg-nota-lightblue"
                   >
-                    Plan {index + 1}
+                    {index === 0 ? (
+                      <div className="font-markazi-text text-2xl text-nota-black">
+                        {data}
+                      </div>
+                    ) : (
+                      <input
+                        className="border border-nota-black p-2 w-full bg-nota-gray placeholder-nota-black outline-none bg-nota-lightblue"
+                        type="text"
+                        value={data}
+                        onChange={(e) => setEntry(0, index, e.target.value)}
+                      />
+                    )}
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {featureColumn.map((feature, rowIndex) => (
-                <tr key={rowIndex}>
-                  <td className="border-separate border border-nota-black">
-                    <input
-                      type="text"
-                      value={feature}
-                      onChange={(e) =>
-                        handleFeatureChange(e.target.value, rowIndex)
-                      }
-                      className="border border-nota-black p-2 w-full bg-nota-gray placeholder-nota-black outline-none"
-                      placeholder={`Enter feature ${rowIndex + 1}`}
-                    />
-                  </td>
-                  {planColumns[rowIndex].map((plan, colIndex) => (
+              {rows.slice(1, rows.length).map((row, index) => (
+                <tr key={index}>
+                  {row.map((data, dataIndex) => (
                     <td
-                      key={colIndex}
+                      key={dataIndex}
                       className="border-separate border border-nota-black"
                     >
                       <input
+                        className={` ${
+                          dataIndex === 0 ? "bg-nota-gray" : ""
+                        } border border-nota-black p-2 w-full placeholder-nota-black outline-none`}
                         type="text"
-                        value={plan}
+                        value={data}
                         onChange={(e) =>
-                          handlePlanChange(e.target.value, rowIndex, colIndex)
+                          setEntry(index + 1, dataIndex, e.target.value)
                         }
-                        className="border border-nota-black p-2 w-full"
-                        placeholder={`Enter data for Plan ${colIndex + 1}`}
                       />
                     </td>
                   ))}
@@ -118,7 +120,7 @@ const ComparisonUpdation = () => {
           </button>
           <button
             className="bg-blue-500 text-white font-bold py-2 px-4 rounded ml-4"
-            onClick={deleteRow}
+            onClick={removeRow}
           >
             Delete Row
           </button>
@@ -130,24 +132,22 @@ const ComparisonUpdation = () => {
           </button>
           <button
             className="bg-blue-500 text-white font-bold py-2 px-4 rounded ml-4"
-            onClick={deleteColumn}
+            onClick={removeColumn}
           >
             Delete Column
           </button>
         </div>
         <div className="flex w-full justify-end items-center mr-36">
-          <div className="flex flex-row h-12 mt-14 mb-10">
-            <button className="flex justify-center items-center h-12 w-28 bg-nota-red rounded-full font-markazi-text text-xl font-bold ml-32">
-              Delete
-            </button>
-            <button className="flex justify-center items-center h-12 w-28 bg-nota-newyellow rounded-full font-markazi-text text-xl font-bold ml-2">
-              Update
-            </button>
-          </div>
+          <button className="flex justify-center items-center h-12 w-28 bg-nota-red rounded-full font-markazi-text text-xl font-bold ml-32">
+            Delete
+          </button>
+          <button className="flex justify-center items-center h-12 w-28 bg-nota-newyellow rounded-full font-markazi-text text-xl font-bold ml-2">
+            Update
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default ComparisonUpdation;
+export default ComparisonCreation;

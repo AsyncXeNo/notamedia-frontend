@@ -22,6 +22,10 @@ import ComparisonManagementPage from "./pages/comparison/ComparisonManagementPag
 import ComparisonCreationPage from "./pages/comparison/ComparisonCreationPage";
 import ComparisonUpdationPage from "./pages/comparison/ComparisonUpdationPage";
 
+import EmailCreationPage from "./pages/email/EmailCreationPage";
+import EmailUpdationPage from "./pages/email/EmailUpdationPage";
+import EmailManagementPage from "./pages/email/EmailManagementPage";
+
 function App() {
   return (
     <Router>
@@ -53,6 +57,13 @@ function App() {
         <Route
           path="/comparison/:unique_name"
           element={<ComparisonUpdationPage />}
+        />
+
+        <Route path="/email_template" element={<EmailManagementPage />} />
+        <Route path="/email_template/new" element={<EmailCreationPage />} />
+        <Route
+          path="/email_template/:unique_name"
+          element={<EmailUpdationPage />}
         />
 
         <Route path="*" element={<NotFound />} />
